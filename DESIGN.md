@@ -29,7 +29,7 @@
 |---|---|---|
 | `images/logo-mark-paper.png` | 筆文字「あさまる」＋縦書き「茅ヶ崎 網元料理」を**生成り色**で透過抜き | 大きなのれん |
 | `images/logo-mark-ink.png` | 同じものを**墨色**で | フッター |
-| `images/favicon.png` `apple-touch-icon.png` `icon-512.png` | 生成り地に墨のマーク | タブ・ホーム画面 |
+| `images/favicon.png` `apple-touch-icon.png` `icon-512.png` | 生成り地に墨の**筆文字だけ**（縦書きは落とす＝小さいと潰れる） | タブ・ホーム画面 |
 | `images/ogp.jpg` | 墨地に生成りのマーク（1200×630） | SNSでURLを貼ったときの画像 |
 
 - 出処: **Instagram アイコンと同じ原画** `../assets/client_assets/logo_asamaru_original.jpg`（1170×1221・クライアント提供）。
