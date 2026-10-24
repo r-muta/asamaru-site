@@ -3,8 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>網元料理 あさまる｜茅ヶ崎・柳島海岸</title>
-<meta name="description" content="茅ヶ崎・柳島海岸の網元料理 あさまる。営業時間・アクセス・ご予約（お電話）のご案内。">
+<title>網元料理 あさまる｜湘南・茅ヶ崎</title>
+<meta name="description" content="湘南・茅ヶ崎の網元料理 あさまる。板前が仕込む、地魚と季節の和食居酒屋。営業時間・アクセス・ご予約（お電話）のご案内。">
+<meta name="theme-color" content="#1f1d1a">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="網元料理 あさまる｜湘南・茅ヶ崎">
+<meta property="og:description" content="板前が仕込む、地魚と季節の和食居酒屋。ご予約はお電話で。">
+<meta property="og:url" content="https://r-muta.github.io/asamaru-site/">
+<meta property="og:image" content="https://r-muta.github.io/asamaru-site/images/ogp.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,6 +25,8 @@
     --ink-soft: #55504a;
     --line: #cfc7b8;
     --rod: #6b5a44;
+    --cloth-fold: #3a3631;
+    --bar-line: #4a4640;
     --gutter: 20px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,7 +44,7 @@
     padding-bottom: 60px; /* スマホ下部バー分 */
   }
   a { color: inherit; }
-  img { display: block; max-width: 100%; }
+  img { display: block; max-width: 100%; height: auto; }
 
   /* ---------- のれん（共通） ---------- */
   .noren { display: flex; flex-direction: column; align-items: center; }
@@ -53,7 +64,7 @@
   .noren-panel:nth-child(2)::after {
     content: ""; position: absolute; right: 0; bottom: 0;
     width: 14%; aspect-ratio: 1;
-    background: linear-gradient(225deg, var(--paper) 50%, #3a3631 50%);
+    background: linear-gradient(225deg, var(--paper) 50%, var(--cloth-fold) 50%);
   }
   /* 3枚に分かれても1つの文字に見えるよう、同じ中身を位置をずらして描く */
   .noren-mark {
@@ -65,14 +76,15 @@
   .noren-panel:nth-child(1) .noren-mark { --i: 0; }
   .noren-panel:nth-child(2) .noren-mark { --i: 1; }
   .noren-panel:nth-child(3) .noren-mark { --i: 2; }
-  .noren-mark img { max-width: 64%; max-height: 70%; }
+  .noren-mark img { width: auto; height: auto; max-width: 62%; max-height: 74%; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .bar a:focus-visible, .menu-btn:focus-visible { outline-color: var(--rod); }
 
   /* ---------- トップ：大きなのれん（写真のFVは置かない） ---------- */
   .top { padding: 28px var(--gutter) 40px; }
   .top .noren-rod { width: min(96vw, 820px); }
   .top .noren-cloth { width: min(90vw, 760px); height: min(66svh, 600px); }
-  .top .wordmark { font-size: clamp(52px, 15vw, 132px); font-weight: 700; letter-spacing: .12em; line-height: 1; white-space: nowrap; }
-  .top .sub { margin-top: 20px; font-size: clamp(12px, 2.4vw, 16px); letter-spacing: .6em; opacity: .85; white-space: nowrap; }
   .top .place { margin-top: 28px; text-align: center; font-size: 14px; letter-spacing: .4em; color: var(--ink-soft); }
   .scroll-cue { display: block; width: 1px; height: 56px; margin: 18px auto 0; background: var(--line); position: relative; overflow: hidden; }
   .scroll-cue::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--ink); animation: cue 2.2s ease-in-out infinite; }
@@ -146,7 +158,23 @@
   .map { margin-top: 32px; aspect-ratio: 4 / 3; border: 1px solid var(--line); filter: grayscale(1) contrast(.95); }
   .map iframe { width: 100%; height: 100%; border: 0; display: block; }
 
-  .recruit-roles { font-size: 20px; letter-spacing: .3em; margin-bottom: 14px; }
+  .recruit-roles { font-size: 20px; letter-spacing: .3em; line-height: 1.8; margin-bottom: 16px; }
+  .recruit-roles span { font-size: 14px; letter-spacing: .1em; }
+  .recruit-note { margin-top: 24px; line-height: 1.8; color: var(--ink); }
+
+  .lead { font-size: clamp(20px, 5vw, 26px); font-weight: 600; letter-spacing: .14em; line-height: 1.7; text-align: center; margin-bottom: 40px; }
+  .sp { display: inline; }
+
+  .dishes { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .dishes .photo { aspect-ratio: 1; }
+  .dishes p { margin-top: 12px; font-size: 14px; line-height: 1.6; letter-spacing: .02em; text-align: center; word-break: keep-all; overflow-wrap: anywhere; }
+
+  .terms { list-style: none; margin: 32px auto 0; max-width: 30em; text-align: left; font-size: 14px; line-height: 1.8; }
+  .terms li { padding-left: 1em; text-indent: -1em; }
+  .terms li::before { content: "・"; }
+
+  .route { display: grid; grid-template-columns: 5em 1fr; gap: 8px 12px; margin: 28px auto 0; max-width: 30em; text-align: left; font-size: 15px; line-height: 1.8; }
+  .route dt { color: var(--ink-soft); }
 
   footer {
     padding: 56px var(--gutter) 40px; text-align: center;
@@ -154,6 +182,8 @@
   }
   footer .name { font-size: 20px; color: var(--ink); letter-spacing: .3em; margin-bottom: 8px; }
   footer a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .foot-logo { width: 72px; margin: 0 auto 20px; }
+  .foot-ig { margin-top: 16px; }
 
   /* ---------- ハンバーガー ---------- */
   .menu-btn {
@@ -194,7 +224,7 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
   .bar a { display: grid; place-items: center; height: 60px; text-decoration: none; font-size: 14px; letter-spacing: .25em; }
-  .bar a + a { border-left: 1px solid #4a4640; }
+  .bar a + a { border-left: 1px solid var(--bar-line); }
 
   @media (min-width: 760px) {
     :root { --gutter: 48px; }
@@ -205,6 +235,9 @@
     .gallery { grid-template-columns: 2fr 1fr; }
     .gallery .photo.wide { grid-column: 1; grid-row: 1 / 3; aspect-ratio: auto; }
     .gallery .photo { aspect-ratio: 4 / 3; }
+    .sp { display: none; }
+    .dishes { gap: 20px; }
+    .dishes p { font-size: 16px; letter-spacing: .08em; }
   }
 </style>
 </head>
@@ -214,6 +247,7 @@
 <nav class="menu" id="menu" aria-label="ページ内メニュー">
   <ul>
     <li><a href="#about"><span class="kanji">店</span>あさまるについて</a></li>
+    <li><a href="#menu-items"><span class="kanji">品</span>定番の品</a></li>
     <li><a href="#info"><span class="kanji">時</span>営業のご案内</a></li>
     <li><a href="#reserve"><span class="kanji">予</span>ご予約</a></li>
     <li><a href="#access"><span class="kanji">道</span>アクセス</a></li>
@@ -226,13 +260,14 @@
   <div class="noren">
     <div class="noren-rod"></div>
     <div class="noren-cloth">
-      <!-- ロゴ画像を使うときは各 .noren-mark の中身を <img src="images/logo-white.png" alt=""> に（1枚目だけ alt="網元料理 あさまる"） -->
-      <div class="noren-panel"><div class="noren-mark"><div class="wordmark">あさまる</div><div class="sub">茅ヶ崎　網元料理</div></div></div>
-      <div class="noren-panel" aria-hidden="true"><div class="noren-mark"><div class="wordmark">あさまる</div><div class="sub">茅ヶ崎　網元料理</div></div></div>
-      <div class="noren-panel" aria-hidden="true"><div class="noren-mark"><div class="wordmark">あさまる</div><div class="sub">茅ヶ崎　網元料理</div></div></div>
+      <!-- ロゴ＝Instagramアイコン原画（assets/client_assets/logo_asamaru_original.jpg）から筆文字だけを抜いたもの -->
+      <div class="noren-panel"><div class="noren-mark"><img src="images/logo-mark-paper.png" width="967" height="1034" alt="網元料理 あさまる（茅ヶ崎）"></div></div>
+      <div class="noren-panel" aria-hidden="true"><div class="noren-mark"><img src="images/logo-mark-paper.png" width="967" height="1034" alt=""></div></div>
+      <div class="noren-panel" aria-hidden="true"><div class="noren-mark"><img src="images/logo-mark-paper.png" width="967" height="1034" alt=""></div></div>
     </div>
   </div>
-  <p class="place">茅ヶ崎・柳島海岸</p>
+  <h1 class="sr-only">網元料理 あさまる</h1>
+  <p class="place">湘南・茅ヶ崎</p>
   <a class="scroll-cue" href="#about" aria-label="下へ"></a>
 </header>
 
@@ -240,11 +275,23 @@
   <section id="about">
     <div class="wrap">
       <div class="sec-head" data-kanji="店"><h2>あさまるについて</h2></div>
+      <p class="lead">板前が仕込む、<br class="sp">地魚と季節の和食居酒屋。</p>
       <div class="gallery">
-        <div class="photo wide" data-slot="写真｜料理"></div>
-        <div class="photo" data-slot="写真｜店内"></div>
-        <div class="photo" data-slot="写真｜外観"></div>
+        <div class="photo wide"><img src="images/dish-sashimi.jpg" width="1072" height="939" alt="本日のオススメ5点刺盛り" loading="lazy"></div>
+        <div class="photo"><img src="images/inside-tairyobata.jpg" width="1477" height="1108" alt="店内に掛かる「あさ丸」の大漁旗" loading="lazy"></div>
+        <div class="photo"><img src="images/exterior-nobori.jpg" width="1156" height="1415" alt="店先の幟「茅ヶ崎 網元料理 あさまる」" loading="lazy"></div>
       </div>
+    </div>
+  </section>
+
+  <section id="menu-items">
+    <div class="wrap">
+      <div class="sec-head" data-kanji="品"><h2>定番の品</h2></div>
+      <ul class="dishes">
+        <li><div class="photo"><img src="images/menu-shirasu.jpg" width="1170" height="1155" alt="" loading="lazy"></div><p>生しらす</p></li>
+        <li><div class="photo"><img src="images/menu-sashimi.jpg" width="1108" height="1477" alt="" loading="lazy"></div><p>本日の<wbr>オススメ<br>5点刺盛り</p></li>
+        <li><div class="photo"><img src="images/menu-kinmedai.jpg" width="479" height="476" alt="" loading="lazy"></div><p>金目鯛の<wbr>煮付け</p></li>
+      </ul>
     </div>
   </section>
 
@@ -268,6 +315,12 @@
       <div class="actions">
         <a class="btn solid" href="tel:0467883751">電話をかける</a>
       </div>
+      <ul class="terms">
+        <li>ご予約はお席のみ承っております（コース料理のご用意はございません）</li>
+        <li>2ヶ月前から受付／限定5組</li>
+        <li>満席等でお断りする場合がございます</li>
+        <li>繁忙時はお電話に出られない場合がございます</li>
+      </ul>
     </div>
   </section>
 
@@ -279,6 +332,10 @@
         <iframe title="あさまるの地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           src="https://www.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E8%8C%85%E3%83%B6%E5%B4%8E%E5%B8%82%E6%9F%B3%E5%B3%B6%E6%B5%B7%E5%B2%B818-31&z=16&output=embed"></iframe>
       </div>
+      <dl class="route">
+        <dt>お車で</dt><dd>茅ヶ崎海岸I.C から約2分（駐車場あり）</dd>
+        <dt>バスで</dt><dd>茅ヶ崎駅よりバス「浜見平団地」下車、海側へ徒歩3分</dd>
+      </dl>
       <div class="actions">
         <a class="btn" href="https://www.google.com/maps/search/?api=1&query=%E7%B6%B2%E5%85%83%E6%96%99%E7%90%86%E3%81%82%E3%81%95%E3%81%BE%E3%82%8B%20%E8%8C%85%E3%83%B6%E5%B4%8E%E5%B8%82%E6%9F%B3%E5%B3%B6%E6%B5%B7%E5%B2%B818-31" target="_blank" rel="noopener">Googleマップで開く</a>
       </div>
@@ -288,19 +345,21 @@
   <section id="recruit">
     <div class="wrap center">
       <div class="sec-head" data-kanji="募"><h2>スタッフ募集</h2></div>
-      <p class="recruit-roles">ホール・キッチン・板前</p>
-      <p>一緒に働いてくださる方を募集しています。<br>ご応募は下記のフォームから承ります。</p>
+      <p class="recruit-roles">ホール・洗い場<span>（アルバイト）</span><br>板前<span>（社員）</span></p>
+      <p>一緒に働いてくださる方を<br class="sp">募集しています。<br>ご応募は下記の<br class="sp">フォームから承ります。</p>
       <div class="actions">
         <a class="btn solid" href="https://forms.gle/u7CBLc6UZua8pTs69" target="_blank" rel="noopener">応募フォームへ</a>
       </div>
+      <p class="note recruit-note">ご応募から7日以内に、ご記入のメールアドレスあてにご連絡します。<br>7日を過ぎても連絡がない場合は、お手数ですが 0467-88-3751 までお問い合わせください。</p>
     </div>
   </section>
 </main>
 
 <footer>
+  <img class="foot-logo" src="images/logo-mark-ink.png" width="967" height="1034" alt="" loading="lazy">
   <p class="name">網元料理 あさまる</p>
-  <p>神奈川県茅ヶ崎市柳島海岸18-31　TEL 0467-88-3751</p>
-  <p style="margin-top:16px"><a href="https://www.instagram.com/chigasaki_asamaru/" target="_blank" rel="noopener">Instagram @chigasaki_asamaru</a></p>
+  <p>神奈川県茅ヶ崎市柳島海岸18-31<br>TEL 0467-88-3751</p>
+  <p class="foot-ig"><a href="https://www.instagram.com/chigasaki_asamaru/" target="_blank" rel="noopener">Instagram @chigasaki_asamaru</a></p>
 </footer>
 
 <nav class="bar" aria-label="クイックリンク">
