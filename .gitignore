@@ -1,0 +1,8 @@
+# 制作メモは公開しない（親フォルダ ../docs/site/ に控え・2026-10-26）
+CONTENT.md
+DESIGN.md
+.claude/
+.env*
+_draft*
+NEXT.md
+.DS_Store
