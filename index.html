@@ -165,6 +165,11 @@
   .lead { font-size: clamp(20px, 5vw, 26px); font-weight: 600; letter-spacing: .14em; line-height: 1.7; text-align: center; margin-bottom: 40px; }
   .sp { display: inline; }
 
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 36px; }
+  .duo .photo { aspect-ratio: 4 / 5; }
+  .duo figcaption { margin-top: 10px; text-align: center; font-size: 14px; letter-spacing: .4em; color: var(--ink-soft); }
+  .banner { aspect-ratio: 3 / 2; margin-bottom: 40px; }
+
   .dishes { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .dishes .photo { aspect-ratio: 1; }
   .dishes p { margin-top: 12px; font-size: 14px; line-height: 1.6; letter-spacing: .02em; text-align: center; word-break: keep-all; overflow-wrap: anywhere; }
@@ -279,7 +284,7 @@
       <div class="gallery">
         <div class="photo wide"><img src="images/dish-sashimi.jpg" width="1072" height="939" alt="本日のオススメ5点刺盛り" loading="lazy"></div>
         <div class="photo"><img src="images/inside-tairyobata.jpg" width="1477" height="1108" alt="店内に掛かる「あさ丸」の大漁旗" loading="lazy"></div>
-        <div class="photo"><img src="images/exterior-nobori.jpg" width="1156" height="1415" alt="店先の幟「茅ヶ崎 網元料理 あさまる」" loading="lazy"></div>
+        <div class="photo"><img src="images/exterior-nobori.jpg" width="1108" height="1477" alt="店先の幟「茅ヶ崎 網元料理 あさまる」と瓦屋根の建物" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -298,6 +303,10 @@
   <section id="info">
     <div class="wrap">
       <div class="sec-head" data-kanji="時"><h2>営業のご案内</h2></div>
+      <div class="duo">
+        <figure><div class="photo"><img src="images/lunch-zen.jpg" width="1108" height="1385" alt="お昼の膳。刺身・天ぷら・小鉢・ご飯・お椀" loading="lazy"></div><figcaption>昼</figcaption></figure>
+        <figure><div class="photo"><img src="images/night-beer.jpg" width="1170" height="1152" alt="大漁旗の前に置かれた生ビール2杯" loading="lazy"></div><figcaption>夜</figcaption></figure>
+      </div>
       <dl class="info">
         <dt>昼</dt><dd>11:30 – 15:00<span class="lo">L.O. 14:30</span></dd>
         <dt>夜</dt><dd>17:00 – 22:00<span class="lo">L.O. 20:30</span></dd>
@@ -345,6 +354,7 @@
   <section id="recruit">
     <div class="wrap center">
       <div class="sec-head" data-kanji="募"><h2>スタッフ募集</h2></div>
+      <div class="photo banner"><img src="images/recruit-tairyobata.jpg" width="1073" height="880" alt="店内の大漁旗「茅ヶ崎 あさ丸」" loading="lazy"></div>
       <p class="recruit-roles">ホール・洗い場<span>（アルバイト）</span><br>板前<span>（社員）</span></p>
       <p>一緒に働いてくださる方を<br class="sp">募集しています。<br>ご応募は下記の<br class="sp">フォームから承ります。</p>
       <div class="actions">
