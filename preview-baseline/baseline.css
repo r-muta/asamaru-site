@@ -7,13 +7,13 @@
   --on-action: #fff;
   --body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
   --heading: var(--body);
-  --gutter: 1.5rem;
-  --section: 4rem;
-  --gap: 1.5rem;
+  --gutter: clamp(1.5rem, 4vw, 3rem);
+  --section: clamp(4rem, 8vw, 6rem);
+  --gap: clamp(1.5rem, 4vw, 3rem);
   --wide: 70rem;
-  --h1: 2rem;
-  --h2: 1.5rem;
-  --h3: 1.25rem;
+  --h1: clamp(2rem, 4vw, 3rem);
+  --h2: clamp(1.5rem, 2.75vw, 2rem);
+  --h3: clamp(1.25rem, 2vw, 1.5rem);
 }
 
 * { box-sizing: border-box; }
@@ -65,13 +65,5 @@ a { color: inherit; text-underline-offset: .2em; }
   font-weight: 700;
 }
 @media (min-width: 48rem) {
-  :root {
-    --gutter: 3rem;
-    --section: 6rem;
-    --gap: 3rem;
-    --h1: 3rem;
-    --h2: 2rem;
-    --h3: 1.5rem;
-  }
   .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

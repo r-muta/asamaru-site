@@ -9,6 +9,8 @@
 }
 body { letter-spacing: .06em; }
 .hero { align-items: center; }
+.hero h1 span { white-space: nowrap; }
+.hero p { text-wrap: pretty; }
 .hero img {
   width: 100%;
   aspect-ratio: 4 / 3;
