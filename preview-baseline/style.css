@@ -1,0 +1,24 @@
+:root {
+  --paper: #f3efe6;
+  --ink: #1f1d1a;
+  --note: #55504a;
+  --line: #cfc7b8;
+  --action: var(--ink);
+  --on-action: var(--paper);
+  --body: "Shippori Mincho", "Hiragino Mincho ProN", "YuMincho", serif;
+}
+body { letter-spacing: .06em; }
+.hero { align-items: center; }
+.hero img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.dish { width: min(100%, 24rem); justify-self: center; }
+.hours {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: .5rem 1rem;
+  margin: 0;
+}
+.hours dd { margin: 0; }
