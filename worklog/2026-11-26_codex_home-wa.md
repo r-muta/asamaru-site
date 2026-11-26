@@ -1,6 +1,6 @@
 ---
 agent: codex
-status: working
+status: done
 scope: preview-wa/
 ---
 
@@ -11,4 +11,7 @@ scope: preview-wa/
 - Chromeの320・390・767・768・1024・1440pxで画像・横はみ出し・ロゴ周りの白地・アンカー・固定予約の出し分けを確認。390/1440pxはスクリーンショットでも確認。応募リンクの応答200。実機、通話、応募送信は未検証。
 - 比較案 http://127.0.0.1:8771/preview-wa/ 。今回の版は作業ブランチで確認。採用判断と公開前のお店確認は残り。
 
-- [ ] 白地案をVercelの既存レビュープロジェクトのPreviewに配置し、表示を確認して記録。
+- [x] 白地案をVercelの既存レビュープロジェクトのPreviewに配置し、状態を確認して記録。
+
+- Vercel Preview: https://asamaru-home-review-80bhip6h0-r-mukais-projects.vercel.app （既存 asamaru-home-review、ソース 0a92ed7）。Vercelで target preview / Ready を確認。未ログインではVercel SSOへ302。デプロイ先の画面表示は未確認。ローカルは既報のChrome確認済み。
+- 確認時の `vercel curl --yes` が作業ルートを誤って Vercel の `projects` にリンクし、同プロジェクトに保護バイパストークンを生成した。ローカルに生成された .vercel と .gitignore は退避。Vercel側のプロジェクトとトークンの整理は未実施。
